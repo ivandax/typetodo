@@ -1,0 +1,8 @@
+.todolist{
+    margin: 0;
+}
+
+.todolist > li{
+    list-style-type: none;
+    padding: 8px;
+}

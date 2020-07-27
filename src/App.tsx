@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+import TodoList from './components/TodoList';
+import AddTodo from './components/AddTodo';
+
+const App: React.FC = () => {
+
+  //const [todos, setTodos] = useState([{text: "hello", complete: true}]);
+  const [todos, setTodos] = useState<todo[]>([]);
+
+  const toggleTodo : toggleTodo = (selectedTodo) => {
+    if(todos.length){
+      const newTodos = todos.map( todo => {
+        if(todo.text === selectedTodo.text){
+          return {
+            text: todo.text,
+            complete: !todo.complete
+          }
+        }
+        return todo;
+      })
+      setTodos(newTodos);
+    }
+  }
+
+  const addTodo : AddTodo = (newTodo) => {
+    newTodo.trim() !== '' && setTodos([...todos, {text: newTodo, complete: false}])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Simple Typescript TodoList</h3>
+      {todos.length ? <TodoList todos={todos} toggleTodo={toggleTodo}/> : <></>}
+      <AddTodo addTodo={addTodo}/>
     </div>
   );
 }
