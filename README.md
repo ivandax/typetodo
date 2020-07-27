@@ -1,3 +1,8 @@
+Relevant installs:
+
+* npm install -D @types/module-name (to install a react typescript project) You need the types definitions for React and React-DOM, if you use Redux, you need those too:
+* npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -1,5 +1,6 @@
 {
   "name": "type-todo",
+  "homepage": "http://www.ivandax.com/projects/typetodo/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
